@@ -1,8 +1,8 @@
 class Solution {
     public int findNumbers(int[] nums) {
         int ans=0;
-        for (int i=0;i<nums.length;i++){
-            int temp=nums[i];
+        for (int temp : nums){
+            
             int count=0;
             while(temp>0){
                 temp=temp/10;

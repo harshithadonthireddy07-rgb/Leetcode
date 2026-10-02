@@ -1,37 +1,35 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
+        List<String> ans =new ArrayList<>();
+        generate("",ans,n);
+        return ans;
         
-        List<String> result=new ArrayList<>();
-        generate("",n,result);
-        return result;
     }
 
-    public void generate(String curr,int n,List<String> result){
-        if(curr.length()==2*n){
+    public void generate(String curr,List<String> ans ,int n){
+        if(curr.length() == 2*n){
             if(isvalid(curr)){
-                result.add(curr);
+                ans.add(curr);
             }
             return;
         }
-        generate(curr+"(",n,result);
-        generate(curr+")",n,result);
-
-
+        generate(curr+')',ans,n);
+        generate(curr+'(',ans,n);
     }
-    public Boolean isvalid(String s){
+
+    public boolean isvalid(String curr){
         int count=0;
-        for(char ch:s.toCharArray()){
-            if(ch=='('){
+        for(char c:curr.toCharArray()){
+            if(c =='('){
                 count++;
             }
-            else{
+            else if(c ==')'){
                 count--;
             }
-              if(count<0){
-            return false;
+            if(count<0){
+                return false;
+            }
         }
-        }
-      
         return count==0;
     }
 }

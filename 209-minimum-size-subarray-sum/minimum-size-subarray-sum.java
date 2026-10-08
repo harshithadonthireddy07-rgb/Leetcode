@@ -6,14 +6,14 @@ class Solution {
         for(int right=0;right<nums.length;right++){
             sum+=nums[right];
             while(sum>=target){
-                int length=right-left+1;
-                min=Math.min(min,length);
+                int len=right-left+1;
+                min=Math.min(len,min);
                 sum-=nums[left];
                 left++;
 
             }
         }
-        if( min==Integer.MAX_VALUE){
+        if(min==Integer.MAX_VALUE){
             return 0;
         }
     return min;    
